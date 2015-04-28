@@ -14,9 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-public class ApplicationUserService {
+public class ApplicationUserRepositoryService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationUserService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationUserRepositoryService.class);
 
     @Resource(name = "applicationUserRepository")
     private ApplicationUserRepository applicationUserRepository;
@@ -30,7 +30,7 @@ public class ApplicationUserService {
         ApplicationUser deleted = applicationUserRepository.findOne(id);
 
         if (deleted == null) {
-            LOGGER.debug("No User found with id: " + id);
+            LOGGER.debug("No model found with id: " + id);
             throw new ModelNotFoundException();
         }
 
