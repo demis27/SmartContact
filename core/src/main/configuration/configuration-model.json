@@ -10,7 +10,7 @@
       "ddl":null
    },
    "objectConfiguration":{
-      "packageName":"org.demis.smart.contact"
+      "packageName":"com.demis.smart.contact"
    },
    "projectPath":"maven-plugin",
    "templatesPath": "/src/main/configuration/",
