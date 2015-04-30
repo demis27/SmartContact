@@ -32,7 +32,7 @@ public class UserGroupRepositoryService {
         UserGroup deleted = userGroupRepository.findOne(id);
 
         if (deleted == null) {
-            LOGGER.debug("No User found with id: " + id);
+            LOGGER.debug("No model found with id: " + id);
             throw new ModelNotFoundException();
         }
 

@@ -32,7 +32,7 @@ public class UserGroupLabelRepositoryService {
         UserGroupLabel deleted = userGroupLabelRepository.findOne(id);
 
         if (deleted == null) {
-            LOGGER.debug("No User found with id: " + id);
+            LOGGER.debug("No model found with id: " + id);
             throw new ModelNotFoundException();
         }
 

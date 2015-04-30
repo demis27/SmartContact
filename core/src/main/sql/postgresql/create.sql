@@ -38,3 +38,26 @@ create table "SmartContact".application_user (
         references "SmartContact".user_group (user_group_id) match simple
         on update no action on delete no action
 );
+
+create sequence "SmartContact".incoming_transport_sequence;
+create table "SmartContact".incoming_transport (
+    incoming_transport_id   integer default nextval ('"SmartContact".incoming_transport_sequence') not null,
+    creation_date           timestamp without time zone default current_date not null,
+    modification_date       timestamp without time zone default current_date not null,
+    "name"                  character varying(64) unique,
+    constraint incoming_transport_pk primary key (incoming_transport_id)
+);
+
+create sequence "SmartContact".incoming_email_sequence;
+create table "SmartContact".incoming_email (
+    incoming_email_id       integer default nextval ('"SmartContact".incoming_email_sequence') not null,
+    creation_date           timestamp without time zone default current_date not null,
+    modification_date       timestamp without time zone default current_date not null,
+    email_size              integer not null,
+    incoming_transport_id   integer not null,
+    binary_content          text not null,
+    constraint incoming_email_pk primary key (incoming_email_id),
+    constraint incoming_email_transport_fk foreign key (incoming_transport_id)
+        references "SmartContact".incoming_transport (incoming_transport_id) match simple
+        on update no action on delete no action
+);
